@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ANILLO CERO</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{ "imports": { "three": "./vendor/three.module.js" } }</script>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="vignette"></div>
+  <div id="zonewarn">FUERA DEL ANILLO</div>
+
+  <div id="topleft">
+    <canvas id="minimap" width="170" height="170"></canvas>
+    <div id="zoneinfo"><span id="zonelabel">El anillo se cierra en</span> <b id="zonetime">0:00</b></div>
+  </div>
+
+  <div id="topright">
+    <div class="stat"><b id="alive">16</b><span>EN PIE</span></div>
+    <div class="stat"><b id="kills">0</b><span>BAJAS</span></div>
+  </div>
+  <div id="feed"></div>
+
+  <div id="crosshair">
+    <i class="ch t"></i><i class="ch b"></i><i class="ch l"></i><i class="ch r"></i><i class="dot"></i>
+    <div id="hitmarker"></div>
+    <div id="reloadbar"><i></i></div>
+  </div>
+  <div id="dmgdir"></div>
+  <div id="prompt"></div>
+  <div id="toast"></div>
+
+  <div id="vitals">
+    <div class="bar shield"><i id="shieldfill"></i><span id="shieldnum">50</span></div>
+    <div class="bar health"><i id="healthfill"></i><span id="healthnum">100</span></div>
+  </div>
+
+  <div id="loadout">
+    <div id="ammo"><b id="ammomag">30</b><span id="ammores">/ 120</span></div>
+    <div id="weaponname">Fusil Vesper</div>
+    <div id="slots"></div>
+  </div>
+
+  <div id="buildbar" class="hidden">
+    <div class="piece" data-type="wall"><kbd>Q</kbd><span>Muro</span></div>
+    <div class="piece" data-type="ramp"><kbd>F</kbd><span>Rampa</span></div>
+    <div class="piece" data-type="floor"><kbd>Z</kbd><span>Suelo</span></div>
+    <div id="mats"><b id="matsnum">150</b><span>PLACAS</span></div>
+  </div>
+
+  <div id="floaters"></div>
+  <div id="keys"></div>
+</div>
+
+<div id="menu" class="overlay">
+  <div class="panel">
+    <h1>ANILLO <em>CERO</em></h1>
+    <p class="tag">Dieciséis androides. Un anillo que se cierra. Solo uno queda en pie.</p>
+    <div class="modes">
+      <button class="mode" data-mode="build">
+        <span class="mname">FORJA</span>
+        <span class="msub">Con construcción</span>
+        <span class="mdesc">Levanta muros, rampas y suelos de luz sólida para cubrirte y ganar altura.</span>
+      </button>
+      <button class="mode" data-mode="nobuild">
+        <span class="mname">ASALTO</span>
+        <span class="msub">Sin construcción</span>
+        <span class="mdesc">Solo puntería, movimiento y la cobertura del terreno. Más obstáculos en el mapa.</span>
+      </button>
+    </div>
+    <div class="controls">
+      <div><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> Moverse</div>
+      <div><kbd>Mayús</kbd> Esprintar</div>
+      <div><kbd>Espacio</kbd> Saltar</div>
+      <div><kbd>C</kbd> Agacharse</div>
+      <div><kbd>C</kbd> esprintando: Deslizarse</div>
+      <div><kbd>Clic izq.</kbd> Disparar</div>
+      <div><kbd>Clic der.</kbd> Apuntar</div>
+      <div><kbd>R</kbd> Recargar</div>
+      <div><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> / rueda: Armas</div>
+      <div><kbd>E</kbd> Abrir cápsula</div>
+      <div class="buildonly"><kbd>Q</kbd> Muro <kbd>F</kbd> Rampa <kbd>Z</kbd> Suelo</div>
+      <div><kbd>Esc</kbd> Pausa</div>
+    </div>
+  </div>
+</div>
+
+<div id="pause" class="overlay hidden">
+  <div class="panel small">
+    <h2>PAUSA</h2>
+    <button id="resume" class="btn">Continuar</button>
+    <button id="quit" class="btn ghost">Salir al menú</button>
+  </div>
+</div>
+
+<div id="end" class="overlay hidden">
+  <div class="panel small">
+    <h2 id="endtitle">VICTORIA</h2>
+    <p id="endsub"></p>
+    <button id="again" class="btn">Jugar otra vez</button>
+    <button id="tomenu" class="btn ghost">Cambiar de modo</button>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
